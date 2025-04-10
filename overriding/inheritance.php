@@ -40,7 +40,7 @@ class Komik extends Produk {
 	}
 
     public function getInfoProduk() {
-        $str = "komik : " . parent::getInfoProduk() ." - {$this->jmlHal} halaman.";
+        $str = "komik : " . parent::getInfoProduk() ." {$this->jmlHal} halaman.";
         return $str;
     }
 }
@@ -56,7 +56,7 @@ class Game extends Produk {
 	}
 
     public function getInfoProduk() {
-        $str = "game : " . parent::getInfoProduk() . " ~ {$this->waktuMain} jam.";
+        $str = "game : " . parent::getInfoProduk() . " {$this->waktuMain} jam.";
         return $str;
     }
 }
