@@ -2,20 +2,58 @@
 
 class Produk {
 	// property
-	public $judul,
+	private $judul,
 		   $penulis,
-		   $penerbit;
+		   $penerbit,
+		   $harga,
+		   $diskon = 0;
 
-	// visibility = protected agar property bisa di gunakan di chlid nya 
-	//            = private agar property hanya dapat di gunakan di class tertentu
-	protected $diskon = 0;
-	private $harga;
 
 	public function __construct( $judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0) {
 		$this->judul = $judul;
 		$this->penulis = $penulis;
 		$this->penerbit = $penerbit;
 		$this->harga = $harga;
+	}
+
+	public function setJudul($judul) {
+		$this->judul = $judul;
+	} 
+
+	public function getJudul() {
+		return $this->judul;
+	}
+
+	public function setPenulis($penulis) {
+		$this->penulis = $penulis;
+	}
+
+	public function getPenulis() {
+		return $this->penulis;
+	}
+
+	public function setPenerbit($penerbit) {
+		$this->penerbit = $penerbit;
+	}
+
+	public function getPenerbit() {
+		return $this->penerbit;
+	}
+
+	public function setHarga($harga) {
+		return $this->harga = $harga;
+	}
+
+	public function getHarga() {
+		return $this->harga - ($this->harga * $this->diskon / 100 );
+	}
+
+	public function setDiskon( $diskon ) {
+		return $this->diskon = $diskon;
+	}
+
+	public function getDiskon() {
+		return $this->diskon;
 	}
 
 	public function getLabel() {
@@ -28,9 +66,8 @@ class Produk {
 		return $str;
 	}
 
-	public function harga() {
-		return $this->harga - ($this->harga * $this->diskon / 100);
-	}
+
+	
 }
 
 
@@ -65,9 +102,6 @@ class Game extends Produk {
         return $str;
     }
 
-	public function setDiskon( $diskon ) {
-		return $this->diskon = $diskon;
-	}
 }
 
 
@@ -82,13 +116,17 @@ class InfoProduk {
 $produk1 = new Komik("one piece", "oda sensei", "shounen jump", 45000, 100);
 
 // object game
-$produk2 = new Game("uncharted", "Neil Druckman", "sony computer", 100000, 50);
+$produk2 = new Game("uncharted", "Neil Druckman", "sony computer", 25000, 50);
 
 echo $produk1->getInfoProduk(); echo "<br>";
 echo $produk2->getInfoProduk(); echo "<hr>";
 
-$produk2->setDiskon(30);
-echo $produk2->harga();
+$produk2->setDiskon(50);
+echo $produk2->getHarga(); echo "<hr>";
+
+
+echo $produk2->getJudul();
+
 
 
 
